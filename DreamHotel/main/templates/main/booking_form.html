@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+       Availability check
+{% endblock title %}
+{% block contents %}
+<h1>Booking Form for {{ room.title }}</h1>
+<p>Available Rooms: {{ available_rooms }}</p>
+<p>Check-In Date: {{ check_in_date }}</p>
+<p>Check-Out Date: {{ check_out_date }}</p>
+
+<form method="post" action="{% url 'main:confirm_booking' room.id %}">
+    {% csrf_token %}
+    <label for="booked_rooms">Number of Rooms:</label>
+    <input type="number" name="booked_rooms" max="{{ available_rooms }}" required>
+    <button type="submit">Book Now</button>
+</form>
+{% endblock contents %}

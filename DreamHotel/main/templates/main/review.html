@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+       Rooms 
+{% endblock title %}
+{% block contents %}
+    <style>
+        .body {
+            background-color: #f2f2f2;
+        }
+        label {
+            color: #1b5e20;
+            font-weight: bold;
+        }
+        select, textarea {
+            border: 1px solid #1b5e20;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        button {
+            background-color: #1b5e20;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2e7d32;
+        }
+    </style>
+
+    <div class="container mt-5" style="padding: 50px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <h1 style="color: #1b5e20;
+            margin-bottom: 30px;">Submit Review for {{ booking.room.title }}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="rating">Rating (1 to 5):</label>
+                <select name="rating" id="rating" class="form-control" required>
+                    {% for i in "54321" %}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3"> 
+                <label for="comment">Comment:</label>
+                <textarea name="comment" id="comment" rows="4" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn aboutbtn">Submit Review</button>
+        </form>
+    </div>
+    
+    {% endblock contents %}

@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contents %}
+
+<!-- carousel -->
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="overlay"></div>
+        <img src="{% static 'images/img1.png' %}" class="d-block w-100 carouselimage" alt="...">
+        
+        
+      </div>
+      <div class="carousel-item">
+        <div class="overlay"></div>
+        <img src="{% static 'images/img4.jpg' %}" class="d-block w-100 carouselimage" alt="...">
+
+        
+        </div>
+        <div class="carousel-item">
+            <div class="overlay"></div>
+            <img src="{% static 'images/twin room img1.jpg' %}" class="d-block w-100 carouselimage" alt="...">
+            
+            </div>
+        <div class="carousel-caption d-md-block caption" >
+            <h3 data-aos="zoom-out" data-aos-duration="1000" style="font-family:'Dancing Script', cursive; color:rgb(156, 205, 82)">Sleep in </h3>
+            <h1 data-aos="fade-up" data-aos-duration="1000"><pre>COMFORT</pre></b></h1>
+            <h3 data-aos="zoom-out" data-aos-duration="2000" style="font-family:'Dancing Script', cursive; color:rgb(156, 205, 82)"><br>Wake up in a </h3>
+            <h1 data-aos="fade-up" data-aos-duration="2000"><pre>DREAM<br><br><br></pre></b></h1>
+          </div>
+    </div>
+  </div>
+  <div class="container-fluid py-2 mb-3 room" style="background-color:rgb(237, 249, 225)">
+
+    <h6 class="align-middle mx-auto" data-aos="fade-up" data-aos-duration="1000">A tranquil retreat, nestled amidst the spiritual ambience of the Maya Devi Temple<br>Relaxing.Peaceful.Cozy</h6>
+  </div>
+
+  
+  <!-- about -->
+  <div class="section my-5 ">
+    <div class="container my-5 py-5 room">
+      <h2  class="mt-3" style="font-family:'Dancing Script', cursive; color:rgb(113, 167, 33)">Welcome to </h2>
+      <h1>DREAM HOTEL</h1>
+    </div>
+  </div>
+  <div class="about_section layout_padding">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-6">
+             <div class="row-md-2">
+                <div class="about_taital_main">
+                  <div class="row-md-4 about_img" data-aos="fade-up" data-aos-duration="1000">
+                    <img src="{% static 'images/hall.jpg' %}" class="images">
+                 </div>
+                   </div>
+                   
+                </div>
+             </div>
+             <div class="col-md-1">
+            </div>
+            
+            <div class="col-md-5">
+              
+               <div class="about_img1" data-aos="fade-up" data-aos-duration="1000">
+                <div class="my-5">
+                  
+                  <h2>Experience in Dream Hotel</h2>
+                  <div class="row">
+                    <div class=" my-5 col-1">
+                      <div style="border-left: 2px solid rgb(0, 0, 0); height:100%;"></div>
+                    </div>
+                    <div class="col-11">
+                      <p class="my-5 about-contents">
+                        Nestled in the heart of Lumbini, our hotel welcomes you to discover the embrace of genuine coziness. From soft lighting to inviting spaces, each detail is curated to envelop you in comfort.<br><br> Immerse yourself in a retreat of tranquility and luxury, crafting cherished moments in the lap of warmth and intimacy.
+                      </p>
+                      <a href="{% url 'aboutus' %}" style="text-decoration: none;"><button type="button" class="btn btn-success aboutbtn">VIEW MORE</button></a>
+                    </div>
+                  </div>
+                  
+                </div>
+               </div>
+            </div>
+            </div>
+          </div>
+        </div>
+             
+<!-- services -->
+<div class="services_section layout_padding">
+         <div class="container">
+          <div class="section my-5 ">
+            <div class="container my-5 py-5 room">
+              <h2  class="mt-3" style="font-family:'Dancing Script', cursive; color:rgb(113, 167, 33)" >Highlights </h2>
+              <h1>MAKE YOUR STAY<br> MEMORABLE</h1>
+            </div>
+          </div>
+         </div>
+        
+         <div class="services_section_2">
+          <div class="row">
+             <div class="col-lg-4 col-sm-12 col-md-12 my-3 px-1 cardd">
+                <div class="box_main active" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="card" style="width: 20rem;">
+                    <img src="{% static 'images/img2.jpg' %}" class="card-img-top mx-3 my-3 serviceimg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title" >Swimming Pool</h5>
+                      <p class="card-text" >Experience the ultimate relaxation with our excellent swimming facilities.</p>
+                      
+                    </div>
+                </div>
+             </div>
+            </div>
+             <div class="col-lg-4 col-sm-12 col-md-12 my-3 px-1 cardd">
+                <div class="box_main active" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="card" style="width: 20rem;">
+                    <img src="{% static 'images/twin room img2.jpg' %}" class="card-img-top mx-3 my-3 serviceimg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title" >Hotel Rooms</h5>
+                      <p class="card-text" >Luxury rooms that are designed with elegance and comfort in mind.</p>
+                      
+                    </div>
+                </div>
+             </div>
+            </div>
+             <div class="col-lg-4 col-sm-12 col-md-12 my-3 px-1 cardd">
+                <div class="box_main active" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="card" style="width: 20rem;">
+                    <img src="{% static 'images/hotel diner.jpg' %}" class="card-img-top mx-3 my-3 serviceimg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title" >Restaurants</h5>
+                      <p class="card-text" >Delight in gormet dishes, crafted by talented chefs using fresh ingredients.</p>
+                      
+                    </div>
+                </div>
+             </div>
+            </div>
+          </div>
+        </div>
+</div>
+
+<!-- rooms -->
+<style>
+  .room-container {
+    margin-top: 50px;
+  }
+
+  .room-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .room-title {
+    margin-top: 20px;
+  }
+
+  .room-description {
+    color: #666;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .btn-details {
+    margin-top: 20px;
+  }
+</style>
+
+<div class="container pt-5 mt-5">
+<div class="section my-5">
+  <div class="container my-5 py-5 room" >
+    <h2  class="mt-5" style="font-family:'Dancing Script', cursive; color:rgb(113, 167, 33)"><br><br>Explore </h2>
+    <h1>Rooms and Suites</h1>
+    <div class="container room-container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{% static 'images/triple room img1.jpg' %}" class="card-img-top room-image" alt="Triple Room">
+            <div class="card-body">
+              <h4 class="card-title room-title">Triple Room</h4>
+              <p class="card-text room-description">Discover the perfect accommodation for families and friends in our Triple Room.</p>
+              <a href="{% url 'rooms' %}" class="stay">Book Now <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{% static 'images/twin room img1.jpg' %}" class="card-img-top room-image" alt="Twin Room">
+            <div class="card-body">
+              <h4 class="card-title room-title">Double Room</h4>
+              <p class="card-text room-description">Discover the perfect retreat for you and your companion in our Double Room.</p>
+              <a href="{% url 'rooms' %}" class="stay">Book Now <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{% static 'images/single room img1.jpg' %}" class="card-img-top room-image" alt="Single Room">
+            <div class="card-body">
+              <h4 class="card-title room-title">Single Room</h4>
+              <p class="card-text room-description">Escape to your own private oasis in our Single Rooms. </p>
+              <a href="{% url 'rooms' %}" class="stay">Book Now <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- food photo -->
+<div class="foodphoto layout_padding">
+  <div class="container">
+  <div class="section my-5">
+    <div class="container my-5 room">
+      <h2  class="mt-3" style="font-family:'Dancing Script', cursive; color:rgb(173, 222, 98)">Enjoy </h2>
+      <h1 style="color:white;">THE TASTE OF LIFE</h1>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock contents %}

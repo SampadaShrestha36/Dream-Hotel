@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+       Rooms 
+{% endblock title %}
+{% block contents %}
+
+  <style>
+    .profile-container {
+      background-color: #f2f2f2;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .profile-name {
+      color: #1b5e20;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .profile-email {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .profile-details {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-details h5 {
+      color: #1b5e20;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .profile-details p {
+      color: #666;
+      margin-bottom: 5px;
+    }
+    /* General Table Styles */
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 1em;
+    text-align: left;
+}
+
+.responsive-table th, .responsive-table td {
+    padding: 0.5em;
+    border: 1px solid #ddd;
+}
+
+.responsive-table th {
+    background-color: #f8f8f8;
+}
+
+/* Responsive Design */
+.table-container {
+    overflow-x: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .responsive-table thead {
+        display: none;
+    }
+
+    .responsive-table tr {
+        display: block;
+        margin-bottom: 1em;
+    }
+
+    .responsive-table td {
+        display: block;
+        text-align: left;
+        border: none;
+        position: relative;
+        /* padding-left: 50%; */
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        /* padding-left: 0.5em; */
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+  </style>
+
+  <div class="container alert alert-success">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class=" profile-container">
+          <div class="profile-details">
+            <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+                </div>
+                <div class="mb-3">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}">
+                </div>
+                <div class="mb-3">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}">
+                </div>
+                <div class="mb-3">
+                    <label for="bio" class="form-label">Bio</label>
+                    <input type="text" class="form-control" id="bio" name="bio" value="{{ profile.bio }}">
+                </div>
+                <div class="mb-3">
+                    <label for="profile_image" class="form-label">Profile Image</label>
+                    <input type="file" class="form-control" id="profile_image" name="profile_image">
+                </div>
+                <button type="submit" class="btn btn-success">Update Profile</button>
+            </form>
+          </div>
+          
+        
+          <!-- <div class="container mt-5" style="text-align: center; display: flex; justify-content: center;">
+          
+          <a href="{% url 'logout' %}" style="text-decoration: none;">
+            <button type="button" class="btn btn-success mx-3 get">Logout</button>
+        </a>
+      </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock contents %}

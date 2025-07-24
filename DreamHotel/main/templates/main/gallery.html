@@ -1,0 +1,285 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+       Gallery
+{% endblock title %}
+{% block contents %}
+<!-- carousel -->
+<div id="carouselExampleSlidesOnly" class="carousel slide mx-5 mt-4" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="overlay"></div>
+        <img src="{% static 'images/img4.jpg' %}" class="d-block w-100 carouselimage1" alt="...">
+        
+        
+      </div>
+        <div class="carousel-caption d-md-block caption" >
+            <h3 data-aos="zoom-out" data-aos-duration="1000" style="font-family:'Dancing Script', cursive; color:rgb(156, 205, 82)">View our </h3>
+            <h1 class="mx-5" data-aos="fade-up" data-aos-duration="1000"><pre>Gallery</pre></b></h1>
+          </div>
+    </div>
+  </div>
+  <div class="container-fluid py-2 mb-3 room" style="background-color:rgb(237, 249, 225)">
+
+    <h6 class="align-middle mx-auto" data-aos="fade-up" data-aos-duration="1000">A tranquil retreat, nestled amidst the spiritual ambience of the Maya Devi Temple<br>Relaxing.Peaceful.Cozy</h6>
+  </div>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+      }
+  
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin: 20px auto;
+      }
+  
+      .gallery img {
+        /* width: 100%; */
+        width: 300px;
+        height: auto;
+        cursor: pointer;
+        height:200px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+      }
+  
+      .gallery img:hover {
+        transform: scale(1.1);
+      }
+  
+      /* Modal Styling */
+      .modal-backdrop {
+        background-color: rgba(0, 0, 0, 0.982);
+      }
+  
+      .modal img {
+        max-height: 80vh;
+        max-width: 100%;
+        margin: auto;
+        display: block;
+        transition: transform 0.3s ease-in-out;
+      }
+  
+      .zoom {
+        transform: scale(1.5);
+      }
+  
+      .modal-footer {
+        justify-content: flex-end;
+      }
+  
+      .modal-footer .icon-btn {
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #070707dd;
+        transition: color 0.3s;
+      }
+  
+      .modal-footer .icon-btn:hover {
+        color: #343a40;
+      }
+  
+      /* Fullscreen button and hover effects */
+      .fullscreen-btn {
+        font-size: 1.5rem;
+      }
+  
+      .fullscreen-btn:hover {
+        color: #141516e1;
+      }
+    </style>
+ 
+    <!-- <div class="container py-5">
+      <div class="gallery">
+        {% for i in img %}
+          
+        <div>
+          <img src="{{i.images.url}}" alt="Image 1" data-bs-toggle="modal" data-bs-target="#imageModal">
+        </div>
+        {% endfor %}
+        {% for i in data %}
+          
+        <div>
+          <img src="{{i.images.url}}" alt="Image 1" data-bs-toggle="modal" data-bs-target="#imageModal">
+        </div>
+        {% endfor %}
+      </div>
+    </div> -->
+  
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-body text-center">
+            <img id="modalImage" src="" alt="Expanded Image" class="zoom">
+          </div>
+
+          </div>
+        </div>
+      </div> -->
+     
+      <!-- Your existing carousel code remains the same -->
+      
+      <style>
+          /* Existing styles remain... */
+          
+          /* New styles for enhanced modal */
+          .modal-fullscreen {
+              width: 100vw;
+              height: 100vh;
+              margin: 0;
+              padding: 0;
+              max-width: none;
+          }
+      
+          .modal-fullscreen .modal-content {
+              height: 100vh;
+              border: 0;
+              border-radius: 0;
+              background-color: rgba(0, 0, 0, 0.9);
+          }
+      
+          .modal-header {
+              border: none;
+              padding: 1rem;
+              position: absolute;
+              top: 0;
+              right: 0;
+              z-index: 1050;
+          }
+      
+          .modal-body {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100vh;
+          }
+      
+          .navigation-buttons {
+              position: absolute;
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              padding: 0 2rem;
+              top: 50%;
+              transform: translateY(-50%);
+          }
+      
+          .nav-button {
+              background: rgba(255, 255, 255, 0.1);
+              border: none;
+              color: white;
+              padding: 1rem;
+              cursor: pointer;
+              border-radius: 50%;
+              width: 50px;
+              height: 50px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: background-color 0.3s;
+          }
+      
+          .nav-button:hover {
+              background: rgba(255, 255, 255, 0.2);
+          }
+      
+          .close-button {
+              background: none;
+              border: none;
+              color: white;
+              font-size: 2rem;
+              cursor: pointer;
+              padding: 0.5rem;
+          }
+      
+          .modal-image-container {
+              max-width: 90%;
+              max-height: 90vh;
+              margin: auto;
+          }
+      
+          #modalImage {
+              max-width: 100%;
+              max-height: 90vh;
+              object-fit: contain;
+          }
+      </style>
+      
+      <div class="container py-5">
+        <div class="gallery">
+            {% for i in img %}
+            <div>
+                <img src="{{i.images.url}}" alt="Gallery image {{forloop.counter}}" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal" 
+                     data-index="{{forloop.counter}}"
+                     onclick="openModal(this)">
+            </div>
+            {% endfor %}
+            {% for i in data %}
+            <div>
+                <img src="{{i.images.url}}" alt="Gallery image {{forloop.counter}}" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-index="{{forloop.counter|add:img|length}}"
+                     onclick="openModal(this)">
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+      
+      <!-- Enhanced Modal -->
+      <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close-button" data-bs-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="navigation-buttons">
+                          <button class="nav-button" onclick="navigate(-1)">&#10094;</button>
+                          <button class="nav-button" onclick="navigate(1)">&#10095;</button>
+                      </div>
+                      <div class="modal-image-container">
+                          <img id="modalImage" src="" alt="Expanded Image">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      
+<script>
+  let currentImageIndex = 0;
+  const images = [...document.querySelectorAll('.gallery img')];
+  
+  function openModal(imgElement) {
+      currentImageIndex = parseInt(imgElement.getAttribute('data-index')) - 1;
+      document.getElementById('modalImage').src = imgElement.src;
+  }
+  
+  function navigate(direction) {
+      currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+      document.getElementById('modalImage').src = images[currentImageIndex].src;
+  }
+  
+  // Add keyboard navigation
+  document.addEventListener('keydown', function(e) {
+      if (document.getElementById('imageModal').classList.contains('show')) {
+          if (e.key === 'ArrowLeft') navigate(-1);
+          if (e.key === 'ArrowRight') navigate(1);
+          if (e.key === 'Escape') document.querySelector('[data-bs-dismiss="modal"]').click();
+      }
+  });
+  </script>
+     
+{% endblock contents %}

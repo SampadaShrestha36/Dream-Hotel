@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+       About Us 
+{% endblock title %}
+{% block contents %}
+
+<!-- carousel -->
+<div id="carouselExampleSlidesOnly" class="carousel slide mx-5 mt-4" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="overlay"></div>
+        <img src="{% static 'images/img4.jpg' %}" class="d-block w-100 carouselimage1" alt="...">
+        
+        
+      </div>
+        <div class="carousel-caption d-md-block caption" >
+            <h3 data-aos="zoom-out" data-aos-duration="1000" style="font-family:'Dancing Script', cursive; color:rgb(156, 205, 82)">Know more </h3>
+            <h1 class="mx-5" data-aos="fade-up" data-aos-duration="1000"><pre>ABOUT US</pre></b></h1>
+          </div>
+    </div>
+  </div>
+  <div class="container-fluid py-2 mb-3 room" style="background-color:rgb(237, 249, 225)">
+
+    <h6 class="align-middle mx-auto" data-aos="fade-up" data-aos-duration="1000">A tranquil retreat, nestled amidst the spiritual ambience of the Maya Devi Temple<br>Relaxing.Peaceful.Cozy</h6>
+  </div>
+
+
+<!-- about -->
+ <div class="container mb-5"> 
+ <div class="row">
+  <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    <div class="col-lg-7 col-md-10 col-sm-10">
+        <div class="section my-4 ">
+            <div class="container py-5 pt-5 room">
+              <h2  class="mt-2"  style="font-family:'Dancing Script', cursive; color:rgb(113, 167, 33)">Welcome to </h2>
+              <h1 data-aos="fade-up" data-aos-duration="1000">DREAM HOTEL</h1>
+            </div>
+          </div>
+          <div class="about_section layout_padding" >
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6 col-lg-6 col-sm-12 ">
+                     <div class="row-md-2">
+                        <div class="about_taital_main">
+                          <div class="row-md-4 aboutusimg" data-aos="fade-up" data-aos-duration="1000" style="align-items: center;display:flex; justify-content: center;">
+                            <img src="{% static 'images/img6.jpg' %}" class="images1">
+                         </div>
+                           </div>
+                           
+                        </div>
+                     </div>
+                     
+                    
+                    <div class="col-md-6 col-lg-5 col-sm-12">
+                      
+                       <div class="about_img1" data-aos="fade-up" data-aos-duration="1000" style="align-items: center;display:flex; justify-content: center;">
+                              <p class="my-3 about-contents">
+                                Nestled in the heart of Lumbini, our hotel welcomes you to discover the embrace of genuine coziness. From soft lighting to inviting spaces, each detail is curated to envelop you in comfort.<br><br> Immerse yourself in a retreat of tranquility and luxury, crafting cherished moments in the lap of warmth and intimacy.
+                              </p>
+                            
+                       </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+    </div>
+    
+        <div class="col-lg-3 col-md-12 col-sm-12 mt-5 pt-5">
+           <div class="row-md-4 aboutusimg" data-aos="fade-up" data-aos-duration="1000" style="align-items: center;display:flex; justify-content: center;">
+               <img src="{% static 'images/img7.jpg' %}" class="images2">
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+ </div>
+</div>
+
+<!-- amenities -->
+<style>
+  .amenities-title {
+      color: #71A721;
+      font-size: 2rem;
+      font-family: 'Dancing Script', cursive;
+  }
+  
+  .box_main {
+      transition: all 0.3s ease;
+  }
+  
+  .box_main:hover {
+      transform: translateY(-5px);
+  }
+  
+  .card {
+      border: 2px solid #e8f5e9;
+      transition: all 0.3s ease;
+      background: white;
+  }
+  
+  .card:hover {
+      box-shadow: 0 10px 20px rgba(113, 167, 33, 0.2);
+      border-color: #71A721;
+  }
+  
+  .icon-wrapper {
+      width: 80px;
+      height: 80px;
+      background-color: #e8f5e9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1rem auto;
+  }
+  
+  .card:hover .icon-wrapper {
+      background-color: #71A721;
+  }
+  
+  .card:hover .icon-wrapper i {
+      color: white;
+  }
+  
+  .icon-wrapper i {
+      font-size: 2rem;
+      color: #71A721;
+      transition: all 0.3s ease;
+  }
+  
+  .card-title {
+      color: #2c3e50;
+      font-weight: 600;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+  }
+  
+  .card:hover .card-title {
+      color: #71A721;
+  }
+  
+  .card-text {
+      color: #666;
+      line-height: 1.6;
+  }
+  
+  .imges {
+      display: none;  /* Hide the original images */
+  }
+</style>
+
+<!-- Modified HTML section -->
+<div class="services_section layout_padding">
+  <div class="container">
+      <div class="section my-5">
+          <div class="container my-5 py-5 room">
+              <h2 class="amenities-title mt-3">Amenities</h2>
+              <h1>MAKE YOUR STAY<br> MEMORABLE</h1>
+          </div>
+      </div>
+  </div>
+  <div class="services_section_2">
+      <div class="row">
+          <div class="col-lg-4 col-sm-12 col-md-12 my-3 px-1 cardd">
+              <div class="box_main active" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="card" style="width: 20rem;">
+                      <div class="icon-wrapper">
+                          <i class="fas fa-parking"></i>
+                      </div>
+                      <div class="card-body">
+                          <h5 class="card-title">Parking Space</h5>
+                          <p class="card-text">Enjoy hassle-free convenience with spacious, secure parking to make your visit stress-free!</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4 col-sm-12 col-md-12 my-3 px-1 cardd">
+              <div class="box_main active" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="card" style="width: 20rem;">
+                      <div class="icon-wrapper">
+                          <i class="fas fa-wifi"></i>
+                      </div>
+                      <div class="card-body">
+                          <h5 class="card-title">High Speed Wifi</h5>
+                          <p class="card-text">Experience lightning-fast Wi-Fi that keeps you connected and powered up for everything your day demands!</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4 col-sm-12 col-md-12 my-3 px-1 cardd">
+              <div class="box_main active" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="card" style="width: 20rem;">
+                      <div class="icon-wrapper">
+                          <i class="fas fa-coffee"></i>
+                      </div>
+                      <div class="card-body">
+                          <h5 class="card-title">Breakfast Included</h5>
+                          <p class="card-text">We've got the perfect breakfast to fuel your morning and start your day off just right!</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- our story -->
+
+<div class="row">
+  <div class="col-lg-1 col-md-1"></div>
+  <div class="col-lg-5 col-md-5 col-sm-12">
+    <div class="container py-5 pt-5 room">
+      <h2  class="mt-3 px-5" data-aos="fade-up" data-aos-duration="1000" style="justify-content:start;font-family:'Dancing Script', cursive; color:rgb(0, 0, 0)">Our Story </h2>
+    </div>
+    <div class="row-md-2">
+      <div class="about_taital_main">
+        <div class="aboutusimg" data-aos="fade-up" data-aos-duration="1000" style="align-items: center;display:flex; justify-content: center;">
+          <img src="{% static 'images/reception img2.jpg' %}" class="images1">
+       </div>
+         </div>
+         
+      </div>
+  </div>
+  <div class="col-lg-5 col-md-5 col-sm-12 mt-5 pt-5">
+    <div class="container pt-5 mt-5">
+        <ul class="nav nav-pills mb-3 tab-titles text-center" id="pills-tab" role="tablist" data-aos="fade-up" data-aos-duration="1000">
+          <li class="nav-item tab-links about-title active" onclick="openLink('mission')" >Our Mission</li>
+          <li class="nav-item tab-links about-title" onclick="openLink('vision')">Our Vision</li>
+       </ul>
+    </div>
+    <div class="tab-content active-tab" id="mission" data-aos="fade-up" data-aos-duration="1000">
+      <div class="container">
+        <p>At Dream Hotel, we strive to provide an oasis of tranquility for travellers from around the world. Our mission is to create a warm and welcoming environment where guests can relax, rejuvinate, and experience the rich and cultural heritage of Lumbini.</p>
+        <a href="{% url 'rooms' %}" class="stay">Book your stay <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="tab-content" id="vision" data-aos="fade-up" data-aos-duration="1000">
+      <div class="container">
+        <p>To be the premier destination in Lumbini, offering unparalleled hospitality and exceptional experiences that celebrate the essence of tranquility, culture, and heritage. We envision Dream Hotel as a beacon of comfort and inspiration, fostering meaningful connections and unforgettable memories for every guest.</p>
+        <a href="{% url 'rooms' %}" class="stay">Book your stay <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+    
+  </div>
+</div>
+ {% endblock contents %}

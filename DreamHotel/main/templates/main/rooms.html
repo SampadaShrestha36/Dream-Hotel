@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+       Rooms 
+{% endblock title %}
+{% block contents %}
+
+<!-- carousel -->
+<div id="carouselExampleSlidesOnly" class="carousel slide mx-5 mt-4" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="overlay"></div>
+        <img src="{% static 'images/img4.jpg' %}" class="d-block w-100 carouselimage1" alt="...">
+      </div>
+        <div class="carousel-caption d-md-block caption" >
+            <h3 data-aos="zoom-out" data-aos-duration="1000" style="font-family:'Dancing Script', cursive; color:rgb(156, 205, 82)">Explore our </h3>
+            <h1 class="mx-5" data-aos="fade-up" data-aos-duration="1000"><pre>ROOMS AND SUITES</pre></b></h1>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-2 mb-3 room" style="background-color:rgb(237, 249, 225)">
+    <h6 class="align-middle mx-auto" data-aos="fade-up" data-aos-duration="1000">A tranquil retreat, nestled amidst the spiritual ambience of the Maya Devi Temple<br>Relaxing.Peaceful.Cozy</h6>
+</div>
+
+<!-- Search Form -->
+<div class="container mt-4">
+    <form method="GET" action="" class="d-flex justify-content-center gap-2">
+        <div class="input-group" style="max-width: 500px;">
+            <input type="text" 
+                   name="search" 
+                   class="form-control"
+                   placeholder="Search rooms..." 
+                   value="{{ search_query }}"
+                   style="border-radius: 20px 0 0 20px;">
+            <button type="submit" class="btn aboutbtn" style="border-radius: 0 20px 20px 0;">
+                <i class="fa-solid fa-search"></i> Search
+            </button>
+            {% if search_query %}
+                <a href="{% url 'rooms' %}" class="btn btn-outline-secondary ms-2" style="border-radius: 20px;">
+                    Clear Search
+                </a>
+            {% endif %}
+        </div>
+    </form>
+</div>
+
+{% if search_query %}
+    <!-- Search Results -->
+    <div class="container mt-4">
+        <h4 class="text-center mb-4">Search Results</h4>
+        <div class="container rooms mt-4" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px auto;">
+            {% if room_results %}
+                {% for i in room_results %}
+                    <div class="card" style="width: 18rem;" data-aos="fade-up" data-aos-duration="1000">
+                        <img src="{{i.images.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{i.title}}</h5>
+                            <h6 class="container py-2 mt-3" style="background-color: rgba(210, 233, 180, 0.226);">Rs. {{i.price_per_night}} per night</h6>
+                            <a href="{% url 'bookrooms' i.id %}" class="stay">Book Now <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">No rooms found matching your search.</div>
+            {% endif %}
+        </div>
+    </div>
+{% else %}
+    <!-- Default View with Room Categories -->
+    <div class="container mt-5">
+        <ul class="nav nav-pills mb-3 tab-titles text-center align-items-center" id="pills-tab" role="tablist" style="display: flex;">
+            <li class="nav-item tab-links about-title active" onclick="openLink('single')">Single Rooms</li>
+            <li class="nav-item tab-links about-title" onclick="openLink('double')">Double Rooms</li>
+            <li class="nav-item tab-links about-title" onclick="openLink('triple')">Triple Rooms</li>
+        </ul>
+    </div>
+
+    <div class="tab-content active-tab" id="single" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container rooms mt-4" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px auto;">
+            {% for i in single %}
+                <div class="card" style="width: 18rem;" data-aos="fade-up" data-aos-duration="1000">
+                    <img src="{{i.images.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.title}}</h5>
+                        <h6 class="container py-2 mt-3" style="background-color: rgba(210, 233, 180, 0.226);">Rs. {{i.price_per_night}} per night</h6>
+                        <a href="{% url 'bookrooms' i.id %}" class="stay">Book Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="tab-content" id="double" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <div class="container rooms mt-4" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px auto;">
+                {% for i in double %}
+                    <div class="card" style="width: 18rem;" data-aos="fade-up" data-aos-duration="1000">
+                        <img src="{{i.images.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{i.title}}</h5>
+                            <h6 class="container py-2 mt-3" style="background-color: rgba(210, 233, 180, 0.226);">Rs. {{i.price_per_night}} per night</h6>
+                            <a href="{% url 'bookrooms' i.id %}" class="stay">Book Now <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="triple" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <div class="container rooms mt-4" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px auto;">
+                {% for i in triple %}
+                    <div class="card" style="width: 18rem;" data-aos="fade-up" data-aos-duration="1000">
+                        <img src="{{i.images.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{i.title}}</h5>
+                            <h6 class="container py-2 mt-3" style="background-color: rgba(210, 233, 180, 0.226);">Rs. {{i.price_per_night}} per night</h6>
+                            <a href="{% url 'bookrooms' i.id %}" class="stay">Book Now <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock contents %}

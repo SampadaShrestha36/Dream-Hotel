@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+       About Us 
+{% endblock title %}
+{% block contents %}
+<style>
+    body {
+        --dark-green: #547625;
+        --mid-green: #415a2d;
+        --light-green: #d9e6c8;
+        --pale-green: #f0f5e8;
+        --white-green: #f1f8f2;
+    }
+    
+    .booking-card {
+        background: rgba(255, 255, 255, 0.97);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+        max-width: 900px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    
+    .booking-header {
+        background: var(--dark-green);
+        color: white;
+        padding: 30px;
+        text-align: center;
+        position: relative;
+    }
+    
+    .booking-header::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top: 20px solid var(--dark-green);
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+    }
+    
+    .price-tag {
+        background: var(--light-green);
+        color: var(--dark-green);
+        padding: 10px 25px;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 1.2em;
+        display: inline-block;
+        margin-top: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .booking-details {
+        padding: 40px 30px;
+    }
+    
+    .detail-row {
+        padding: 15px;
+        border-bottom: 1px solid rgba(26, 71, 42, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .detail-row:hover {
+        background: var(--pale-green);
+        transform: translateX(10px);
+    }
+    
+    .detail-label {
+        color: var(--dark-green);
+        font-weight: 600;
+    }
+    
+    .btn-confirm {
+        background: var(--mid-green);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        font-size: 1.1em;
+        font-weight: 600;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-confirm:hover {
+        background: var(--dark-green);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(26, 71, 42, 0.3);
+    }
+    
+    .btn-cancel {
+        background: transparent;
+        color: var(--dark-green);
+        border: 2px solid var(--dark-green);
+        padding: 15px 40px;
+        font-size: 1.1em;
+        font-weight: 600;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-cancel:hover {
+        background: var(--dark-green);
+        color: white;
+    }
+    
+    .amenity-badge {
+        background: var(--pale-green);
+        color: var(--dark-green);
+        padding: 8px 15px;
+        border-radius: 15px;
+        margin: 5px;
+        display: inline-block;
+        border: 1px solid var(--light-green);
+    }
+    
+    .total-section {
+        background: var(--white-green);
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+        border: 1px solid var(--light-green);
+    }
+    
+    .room-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .highlight {
+        color: var(--mid-green);
+        font-weight: 700;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="booking-card">
+        <div class="booking-header">
+            <h1><i class="fas fa-hotel me-3"></i>Review Your Booking</h1>
+            <p class="mb-0">Please confirm your reservation details</p>
+            <div class="price-tag">
+                Rs.{{booking.total_price}}
+            </div>
+        </div>
+        
+        <div class="booking-details">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{booking.room.images.url}}" alt="Room Preview" class="room-image">
+                </div>
+                <div class="col-md-6">
+                    <div class="detail-row">
+                        <div class="detail-label">Room Type</div>
+                        <div class="detail-value">{{booking.room.title}}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="detail-row">
+                        <div class="detail-label">Check-in Date</div>
+                        <div class="detail-value">{{booking.check_in_date}}</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="detail-row">
+                        <div class="detail-label">Check-out Date</div>
+                        <div class="detail-value">{{booking.check_out_date}}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Number of Guests</div>
+                <div class="detail-value">{{booking.number_of_guests}}</div>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Included Amenities</div>
+                <div class="detail-value mt-2">
+                    <span class="amenity-badge"><i class="fas fa-wifi me-2"></i>Free Wi-Fi</span>
+                    <span class="amenity-badge"><i class="fas fa-swimming-pool me-2"></i>Pool Access</span>
+                    <span class="amenity-badge"><i class="fas fa-utensils me-2"></i>Breakfast</span>
+                    <span class="amenity-badge"><i class="fas fa-parking me-2"></i>Parking</span>
+                </div>
+            </div>
+            
+            <div class="total-section">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="detail-label">Room Rate</div>
+                        <div class="detail-value">Rs.{{booking.room.price_per_night}} per night</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="detail-label">Number of Nights</div>
+                        <div class="detail-value">{{booking.total_nights}} </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="detail-label">Number of Guests</div>
+                        <div class="detail-value">{{booking.number_of_guests}} </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-label h4">Total Amount</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="highlight h4 text-end">{{booking.total_price}}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="{% url 'cancel_booking' booking_id=booking.id %}" onclick="return confirm('Are you sure you want to cancel this booking?');">
+                <button class="btn btn-cancel me-3">
+                    <i class="fas fa-times me-2"></i>Cancel Booking
+                </button>
+                </a>
+                <a href="{% url 'initiate_payment' booking_id=booking.id %}" style="text-decoration: none; color: white;">
+                    <button class="btn btn-confirm">
+                        <i class="fas fa-check me-2"></i>Confirm Booking
+                    </button>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contents %}

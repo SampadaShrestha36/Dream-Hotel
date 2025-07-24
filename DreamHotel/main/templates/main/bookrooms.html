@@ -1,0 +1,332 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+       Book 
+{% endblock title %}
+{% block contents %}
+{% if messages %}
+    {% for message in messages %}
+        <script>
+            alertify.set('notifier', 'position', 'top-center');
+                alertify.success('{{ message }}');
+        </script>
+    {% endfor %}
+{% endif %}
+<div class="container">
+  
+    <div class="row">
+     
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            
+
+            <div class="carousel-item active">
+              <img src="{{room.images.url}}" class="d-block w-100 roomimg" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{room.image2.url}}" class="d-block w-100 roomimg" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{room.image3.url}}" class="d-block w-100 roomimg" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{room.image4.url}}" class="d-block w-100 roomimg" alt="...">
+            </div>
+            
+            
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="container my-5">
+          <h3 data-aos="zoom-out" data-aos-duration="1000" style="font-family:'Dancing Script', cursive; color:rgb(156, 205, 82)">Room Overview </h3>
+          <p>{{room.description}}</p>
+        </div>
+        <div class="container">
+          <h3 data-aos="fade-up" data-aos-duration="1000" style="font-family:'Dancing Script', cursive; color:rgb(156, 205, 82)">Amenities </h3>
+          <ul>
+            
+            <li data-aos="fade-up" data-aos-duration="1000" style="list-style: none;" class="mt-2"><i class="fa-solid fa-utensils stay"></i>  Breakfast Included
+            </li>
+            <li data-aos="fade-up" data-aos-duration="1000" style="list-style: none;" class="mt-2"><i class="fa-solid fa-tv stay"></i>  Full HD TV</li>
+            <li data-aos="fade-up" data-aos-duration="1000" style="list-style: none;" class="mt-2"> <i class="fa-solid fa-wifi stay"></i>  High Speed Wifi</li>
+            <li data-aos="fade-up" data-aos-duration="1000" style="list-style: none;" class="mt-2"><i class="fas fa-bath stay"></i>  Private Bathroom</li>
+          </ul>
+        </div>
+      </div>
+   
+      <!-- Booking Form Section -->
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="card border-0 rounded-4">
+            <div class="card-body p-4">
+                <h3 class="custom-green mb-4" style="font-family: 'Dancing Script', cursive;">Book Your Stay</h3>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="guests" class="form-label fw-bold">Number of Guests</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-users"></i></span>
+                            <input type="number" class="form-control" id="guests" name="guests" 
+                                placeholder="Enter guests" required min="1" >
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="rooms" class="form-label fw-bold">Number of Rooms</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-door-closed"></i></span>
+                            <input type="number" class="form-control" id="rooms" name="booked_rooms" 
+                                placeholder="Enter rooms" required min="1">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="start_date" class="form-label fw-bold">Check-in Date</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-calendar-check"></i></span>
+                            <input type="date" class="form-control" id="start_date" name="check_in_date" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="end_date" class="form-label fw-bold">Check-out Date</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-calendar-times"></i></span>
+                            <input type="date" class="form-control" id="end_date" name="check_out_date" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="number_of_days" class="form-label fw-bold">Duration</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                            <input type="text" class="form-control" id="number_of_days" name="bookedrooms" readonly>
+                            <span class="input-group-text">nights</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="price" class="form-label fw-bold">Total Price</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-rupee-sign"></i></span>
+                            <input type="text" class="form-control" id="price" name="price" readonly>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn w-100 py-3 rounded-3 fw-bold custom-btn">
+                        <i class="fas fa-check-circle me-2"></i>Book Now
+                    </button>
+                  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container12 mx-5 mt-4">
+  <h3 class="text-green mb-5">Reviews for {{ room.title }}</h1>
+  {% if reviews %}
+  <ul class="review-list">
+      {% for review in reviews %}
+      <li class="review-item">
+        <img 
+        src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}{% static 'images/default-profile.jpg' %}{% endif %}" 
+        alt="Profile Photo" 
+        class="profile-photo me-3"
+        style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; color:black">
+          <strong class="text-green">{{ review.user.username }}:</strong>
+          <p class="mb-2">Rating: {{ review.rating }}/5</p>
+          <p class="mb-2">Comment: {{ review.comment }}</p>
+          <p class="mb-0">Date: {{ review.review_date }}</p>
+      </li>
+      {% endfor %}
+  </ul>
+  {% else %}
+  <p class="text-center text-green">No reviews yet.</p>
+  {% endif %}
+</div>
+<style>
+  
+
+        .container12 {
+            padding: 3rem;
+            background-color: #fff;
+            border-radius: 0.75rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        .text-green {
+            color: #1b5e20;
+        }
+
+        .review-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .review-item {
+            background-color: #f2f2f2;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+        }
+.custom-green {
+    color: rgb(71, 146, 2);
+}
+
+.custom-btn {
+    background-color: rgb(71, 146, 2);
+    color: white;
+}
+
+.custom-btn:hover {
+    background-color: rgb(61, 126, 2);
+    color: white;
+}
+
+.carousel-item img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item img:hover {
+    transform: scale(1.02);
+}
+
+.input-group-text {
+    background-color: #f8f9fa;
+    border-right: none;
+}
+
+.form-control {
+    border-left: none;
+}
+
+.form-control:focus {
+    border-color: #ced4da;
+    box-shadow: none;
+}
+
+.input-group:focus-within .input-group-text {
+    border-color: rgb(71, 146, 2);
+    color: rgb(71, 146, 2);
+}
+
+.input-group:focus-within .form-control {
+    border-color: rgb(71, 146, 2);
+}
+</style>
+          
+<div id="roomData" data-max-guests="{{ room.max_guests|default:0 }}"></div>
+
+         
+      
+<script type="text/javascript">
+  // Get today's date in YYYY-MM-DD format
+  const today = new Date().toISOString().split('T')[0];
+
+  // Get input elements
+  const startDateInput = document.getElementById('start_date');
+  const endDateInput = document.getElementById('end_date');
+  const numberOfDaysInput = document.getElementById('number_of_days');
+  const priceInput = document.getElementById('price');
+  const guestsInput = document.getElementById('guests');
+  const pricePerNight = "{{ room.price_per_night }}"; // Replace this with dynamic fetching from the database
+
+  // Set the minimum date for start and end date fields
+  startDateInput.min = today;
+  endDateInput.min = today;
+
+  // Function to calculate and display the number of days and price
+  function calculateDaysAndPrice() {
+    const startDate = new Date(startDateInput.value);
+    const endDate = new Date(endDateInput.value);
+    const numberOfGuests = parseInt(guestsInput.value) || 0;
+
+    if (startDate && endDate && endDate >= startDate && numberOfGuests > 0) {
+      const timeDifference = endDate - startDate;
+      const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
+      numberOfDaysInput.value = daysDifference;
+
+      // Calculate total price
+      const totalPrice = daysDifference * pricePerNight * numberOfGuests;
+      priceInput.value = totalPrice > 0 ? `${totalPrice}` : '';
+    } else {
+      numberOfDaysInput.value = '';
+      priceInput.value = '';
+    }
+  }
+
+  // Update the minimum date for the end date when the start date changes
+  startDateInput.addEventListener('change', () => {
+    endDateInput.min = startDateInput.value;
+    calculateDaysAndPrice();
+  });
+
+  // Calculate the number of days and price when the end date changes
+  endDateInput.addEventListener('change', calculateDaysAndPrice);
+
+  // Recalculate total price when the number of guests changes
+  guestsInput.addEventListener('input', calculateDaysAndPrice);
+</script>
+<script type="text/javascript">
+  const guestInput = document.getElementById('guests');
+  const roomsInput = document.getElementById('rooms');
+  const maxGuestsPerRoom = parseInt("{{ room.max_guests }}"); // Fetch max guests dynamically from the room data
+  const submitButton = document.querySelector('form button[type="submit"]');
+
+  // Function to validate guests and rooms
+  function validateGuestsAndRooms() {
+    const roomData = document.getElementById("roomData");
+const maxGuestsPerRoom = parseInt(roomData.getAttribute("data-max-guests"));
+
+const numberOfGuests = parseInt(guestInput.value) || 0;
+const numberOfRooms = parseInt(roomsInput.value) || 0;
+const maxGuestsAllowed = numberOfRooms * maxGuestsPerRoom;
+
+console.log("Max Guests Allowed:", maxGuestsAllowed);
+
+
+if (numberOfRooms > numberOfGuests) {
+    alertify.set('notifier', 'position', 'top-right');
+    alertify.success("Each room must have at least one guest.");
+    return false;
+}
+
+if (numberOfGuests > maxGuestsAllowed) {
+    alertify.set('notifier', 'position', 'top-right');
+    alertify.success(`A maximum of ${maxGuestsAllowed} guests is allowed for ${numberOfRooms} room(s).`);
+    return false;
+}
+
+    console.log(maxGuestsAllowed);
+    return true;
+  }
+
+  // Add event listener to the form submit button
+  submitButton.addEventListener('click', (event) => {
+    if (!validateGuestsAndRooms()) {
+      event.preventDefault(); // Prevent form submission if validation fails
+    }
+  });
+</script>
+
+
+
+      </div>
+      
+              
+              
+              
+        </div>
+    </div>
+</div>
+{% endblock contents %}

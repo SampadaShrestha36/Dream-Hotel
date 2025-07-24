@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+       Rooms 
+{% endblock title %}
+{% block contents %}
+    <style>
+        .delete-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .warning-text {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+
+    <div class="container">
+        <div class="delete-container">
+            <h2 class="mb-4">Delete Profile</h2>
+            
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="alert alert-danger">
+                <h4 class="alert-heading">Warning!</h4>
+                <p>You are about to delete your profile. This action cannot be undone. All your data will be permanently removed.</p>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-danger">Delete My Account</button>
+                    <a href="{% url 'user_information' %}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock contents %}
